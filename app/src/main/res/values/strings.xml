@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">myFirstRetrofitApp</string>
+    <string name="empty_country">Please fill the Country</string>
+</resources>
