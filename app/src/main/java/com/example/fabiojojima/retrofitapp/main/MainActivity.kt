@@ -28,14 +28,17 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setupRecyclerView()
         fab.setOnClickListener { openSearchCountry() }
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         mainViewModel.getAllWeathersVM().observe(this, Observer {
-            fun onChange (weather: List<WeatherData>){
-                //TODO update recyclerview
-                Toast.makeText(this@MainActivity, "This works!", Toast.LENGTH_LONG)
+//            fun onChange (weather: List<WeatherData>){
+//                //TODO update recyclerview
+//                Toast.makeText(this@MainActivity, "This works!", Toast.LENGTH_LONG)
+//            }
+            if(it != null){
+                viewAdapter.setData(it!!.list!!)
             }
         })
     }

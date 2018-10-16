@@ -13,22 +13,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_weather.*
 import kotlinx.android.synthetic.main.search_location.*
 
-class SearchCountry : AppCompatActivity(), NewSearchCallback {
+class   SearchCountry : AppCompatActivity(), NewSearchCallback {
     private lateinit var viewModel: SearchViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_location)
         setupViewModel()
-        setupTextWatcher()
+//        setupTextWatcher()
         search_country.setOnClickListener { getInfoFromAPI() }
     }
 
     private fun getInfoFromAPI() {
-        viewModel.insert(cityNameInput.toString(), countryNameInput.toString())
+        viewModel.insert(cityNameInput.text.toString(), countryNameInput.text.toString())
+        finish()
     }
 
     private fun setupTextWatcher() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun setupViewModel() {

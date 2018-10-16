@@ -10,11 +10,11 @@ data class Forecast (var weather: List<Weather>,
         return this.main.temp_min.toString()
     }
 
-    fun getTemp(): String{
+    fun getTempNow(): String{
         return this.main.temp.toString()
     }
 
-    fun getHumidity(): String{
+    fun getHumidityNow(): String{
         return this.main.humidity.toString()
     }
 

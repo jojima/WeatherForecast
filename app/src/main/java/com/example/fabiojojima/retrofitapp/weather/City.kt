@@ -10,5 +10,5 @@ import org.joda.time.DateTime
 class City (var name: String = "",
             var country: String = "",
             var list: List<Forecast>,
-            var lastUpdatedDate : DateTime = DateTime(),
+//            var lastUpdatedDate : DateTime = DateTime(),
             @NonNull @PrimaryKey @ColumnInfo(name = "id") var id: Int = 0)

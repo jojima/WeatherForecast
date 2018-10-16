@@ -3,20 +3,21 @@ package com.example.fabiojojima.retrofitapp.viewmodel
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Transformations
 import com.example.fabiojojima.retrofitapp.weather.WeatherData
 import com.example.fabiojojima.retrofitapp.repository.WeatherRepository
 import com.example.fabiojojima.retrofitapp.weather.CityWeather
+import com.example.fabiojojima.retrofitapp.weather.Forecast
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = WeatherRepository(application)
-    private var allWeather = repository.allWeather
 
-    fun insert(weatherData: CityWeather) {
+    fun insert(weatherData: WeatherData) {
         repository.insert(weatherData)
     }
 
-    fun deleteCity(weatherData : CityWeather) {
+    fun deleteCity(weatherData : WeatherData) {
         repository.delete(weatherData)
     }
 
@@ -24,11 +25,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         repository.clearDB()
     }
 
-    fun update(weatherData : CityWeather) {
+    fun update(weatherData : WeatherData) {
         repository.update(weatherData)
     }
 
-    fun getAllWeathersVM(): LiveData<List<CityWeather>>{
-        return allWeather
+    fun getAllWeathersVM(): LiveData<WeatherData>{
+        val lastCity = repository.lastCity
+        return repository.getForecastFrom()
     }
 }

@@ -8,7 +8,7 @@
 
         <variable
             name="forecast"
-            type="com.example.fabiojojima.retrofitapp.weather.CityWeather" />
+            type="com.example.fabiojojima.retrofitapp.weather.Forecast" />
     </data>
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +23,7 @@
             android:id="@+id/cityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={forecast.dt_txt}"
+            android:text="@{forecast.dt_txt}"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -46,7 +46,7 @@
             android:id="@+id/temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={forecast.getTempNow}"
+            android:text="@{forecast.getTempNow()}"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -67,7 +67,7 @@
             android:id="@+id/tempmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={forecast.getTempMin}"
+            android:text="@{forecast.getTempMin()}"
             app:layout_constraintStart_toEndOf="@+id/mintext"
             app:layout_constraintTop_toTopOf="@+id/mintext"/>
 
@@ -84,7 +84,7 @@
             android:id="@+id/tempmax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={forecast.getTempMax}"
+            android:text="@{forecast.getTempMax()}"
             app:layout_constraintStart_toEndOf="@+id/maxtext"
             app:layout_constraintTop_toTopOf="@+id/maxtext"/>
 
@@ -103,7 +103,7 @@
             android:id="@+id/humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={forecast.getHumidityNow}"
+            android:text="@{forecast.getHumidityNow()}"
             app:layout_constraintStart_toEndOf="@+id/humidityText"
             app:layout_constraintTop_toTopOf="@+id/humidityText"/>
 

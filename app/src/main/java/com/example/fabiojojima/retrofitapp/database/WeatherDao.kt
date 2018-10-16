@@ -10,22 +10,24 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
 import android.arch.persistence.room.Update
 import com.example.fabiojojima.retrofitapp.weather.CityWeather
+import com.example.fabiojojima.retrofitapp.weather.Forecast
 
 @Dao
 interface WeatherDao {
+    @OnConflictStrategy
     @Insert
-    fun insert (weatherData: CityWeather)
+    fun insert (weatherData: WeatherData)
 
-    @Query("DELETE FROM city_weather_table")
+    @Query("DELETE FROM weather_table")
     fun clear()
 
-    @Query("SELECT * FROM city_weather_table ORDER BY id ASC")
-    fun getAllCitiesWeather() : LiveData<List<CityWeather>>
+    @Query("SELECT * FROM weather_table")
+    fun getAllCitiesWeather() : LiveData<WeatherData>
 
     @Delete
-    fun deleteCity(weatherData: CityWeather)
+    fun deleteCity(weatherData: WeatherData)
 
     @Update
-    fun updateCity(weatherData : CityWeather)
+    fun updateCity(weatherData : WeatherData)
 
 }
